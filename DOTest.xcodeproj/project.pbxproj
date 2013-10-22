@@ -13,6 +13,7 @@
 		068DC88518169E4D00300E09 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 068DC88318169E4D00300E09 /* Credits.rtf */; };
 		068DC88818169E4D00300E09 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 068DC88718169E4D00300E09 /* AppDelegate.m */; };
 		068DC88B18169E4D00300E09 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 068DC88918169E4D00300E09 /* MainMenu.xib */; };
+		068DC8971816A4DA00300E09 /* BackupServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 068DC8961816A4DA00300E09 /* BackupServer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,14 +22,17 @@
 		068DC87718169E4D00300E09 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		068DC87818169E4D00300E09 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		068DC87918169E4D00300E09 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		068DC87C18169E4D00300E09 /* DOTest-Info.plist */ = {isa = PBXFileReference; path = "DOTest-Info.plist"; sourceTree = "<group>"; };
+		068DC87C18169E4D00300E09 /* DOTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DOTest-Info.plist"; sourceTree = "<group>"; };
 		068DC87E18169E4D00300E09 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		068DC88018169E4D00300E09 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		068DC88218169E4D00300E09 /* DOTest-Prefix.pch */ = {isa = PBXFileReference; path = "DOTest-Prefix.pch"; sourceTree = "<group>"; };
+		068DC88218169E4D00300E09 /* DOTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DOTest-Prefix.pch"; sourceTree = "<group>"; };
 		068DC88418169E4D00300E09 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		068DC88618169E4D00300E09 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		068DC88618169E4D00300E09 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		068DC88718169E4D00300E09 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		068DC88A18169E4D00300E09 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		068DC8911816A3AC00300E09 /* BackupServerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupServerProtocol.h; sourceTree = "<group>"; };
+		068DC8951816A4DA00300E09 /* BackupServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupServer.h; sourceTree = "<group>"; };
+		068DC8961816A4DA00300E09 /* BackupServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackupServer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +87,10 @@
 			isa = PBXGroup;
 			children = (
 				068DC88618169E4D00300E09 /* AppDelegate.h */,
+				068DC8911816A3AC00300E09 /* BackupServerProtocol.h */,
 				068DC88718169E4D00300E09 /* AppDelegate.m */,
+				068DC8951816A4DA00300E09 /* BackupServer.h */,
+				068DC8961816A4DA00300E09 /* BackupServer.m */,
 				068DC88918169E4D00300E09 /* MainMenu.xib */,
 				068DC87B18169E4D00300E09 /* Supporting Files */,
 			);
@@ -167,6 +174,7 @@
 			files = (
 				068DC88118169E4D00300E09 /* main.m in Sources */,
 				068DC88818169E4D00300E09 /* AppDelegate.m in Sources */,
+				068DC8971816A4DA00300E09 /* BackupServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

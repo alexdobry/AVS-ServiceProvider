@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "BackupServer.h"
 
 @implementation AppDelegate
 
@@ -19,7 +20,25 @@
 	
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+    NSLog(@"applicationDidFinishLaunching");
+    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+    
+    NSSocketPort *port = [[NSSocketPort alloc] init];
+    NSConnection *connection = [NSConnection connectionWithReceivePort:port sendPort:port];
+    BOOL isConnected = [[NSSocketPortNameServer sharedInstance] registerPort:port name:@"doug2"];
+    
+    BackupServer * backupServer = [[BackupServer alloc] init];
+    
+    [connection setRootObject: backupServer];
+    
+    if (!isConnected) {
+        NSLog(@"Impossible to vend this object.");
+    } else {
+        NSLog(@"Object vended.");
+    }
+    
+    [[NSRunLoop currentRunLoop] run];
+    [pool drain];
 }
 
 @end
