@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BackupServerProtocol.h"
+#import "MathProtocol.h"
 
-@interface BackupServer : NSObject <BackupServerProtocol>
+@interface MathService : NSObject <MathProtocol>
 
 @end

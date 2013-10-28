@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol BackupServerProtocol <NSObject>
+@protocol MathProtocol <NSObject>
 
-- (int)backup:(int)zahl;
+- (int)isPrime:(int)number;
 
 @end

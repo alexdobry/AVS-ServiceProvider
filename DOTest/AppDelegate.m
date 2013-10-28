@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "BackupServer.h"
+#import "MathService.h"
 
 @implementation AppDelegate
 
@@ -25,11 +25,11 @@
     
     NSSocketPort *port = [[NSSocketPort alloc] init];
     NSConnection *connection = [NSConnection connectionWithReceivePort:port sendPort:port];
-    BOOL isConnected = [[NSSocketPortNameServer sharedInstance] registerPort:port name:@"doug2"];
+    BOOL isConnected = [[NSSocketPortNameServer sharedInstance] registerPort:port name:@"doug"];
     
-    BackupServer * backupServer = [[BackupServer alloc] init];
+    MathService * mathService = [[MathService alloc] init];
     
-    [connection setRootObject: backupServer];
+    [connection setRootObject: mathService];
     
     if (!isConnected) {
         NSLog(@"Impossible to vend this object.");

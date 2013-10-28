@@ -13,7 +13,7 @@
 		068DC88518169E4D00300E09 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 068DC88318169E4D00300E09 /* Credits.rtf */; };
 		068DC88818169E4D00300E09 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 068DC88718169E4D00300E09 /* AppDelegate.m */; };
 		068DC88B18169E4D00300E09 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 068DC88918169E4D00300E09 /* MainMenu.xib */; };
-		068DC8971816A4DA00300E09 /* BackupServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 068DC8961816A4DA00300E09 /* BackupServer.m */; };
+		068DC8971816A4DA00300E09 /* MathService.m in Sources */ = {isa = PBXBuildFile; fileRef = 068DC8961816A4DA00300E09 /* MathService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,9 +30,9 @@
 		068DC88618169E4D00300E09 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		068DC88718169E4D00300E09 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		068DC88A18169E4D00300E09 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		068DC8911816A3AC00300E09 /* BackupServerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupServerProtocol.h; sourceTree = "<group>"; };
-		068DC8951816A4DA00300E09 /* BackupServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupServer.h; sourceTree = "<group>"; };
-		068DC8961816A4DA00300E09 /* BackupServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackupServer.m; sourceTree = "<group>"; };
+		068DC8911816A3AC00300E09 /* MathProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathProtocol.h; sourceTree = "<group>"; };
+		068DC8951816A4DA00300E09 /* MathService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathService.h; sourceTree = "<group>"; };
+		068DC8961816A4DA00300E09 /* MathService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,10 +87,10 @@
 			isa = PBXGroup;
 			children = (
 				068DC88618169E4D00300E09 /* AppDelegate.h */,
-				068DC8911816A3AC00300E09 /* BackupServerProtocol.h */,
+				068DC8911816A3AC00300E09 /* MathProtocol.h */,
 				068DC88718169E4D00300E09 /* AppDelegate.m */,
-				068DC8951816A4DA00300E09 /* BackupServer.h */,
-				068DC8961816A4DA00300E09 /* BackupServer.m */,
+				068DC8951816A4DA00300E09 /* MathService.h */,
+				068DC8961816A4DA00300E09 /* MathService.m */,
 				068DC88918169E4D00300E09 /* MainMenu.xib */,
 				068DC87B18169E4D00300E09 /* Supporting Files */,
 			);
@@ -174,7 +174,7 @@
 			files = (
 				068DC88118169E4D00300E09 /* main.m in Sources */,
 				068DC88818169E4D00300E09 /* AppDelegate.m in Sources */,
-				068DC8971816A4DA00300E09 /* BackupServer.m in Sources */,
+				068DC8971816A4DA00300E09 /* MathService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +294,7 @@
 				068DC89018169E4D00300E09 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
