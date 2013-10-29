@@ -25,7 +25,7 @@
     
     NSSocketPort *port = [[NSSocketPort alloc] init];
     NSConnection *connection = [NSConnection connectionWithReceivePort:port sendPort:port];
-    BOOL isConnected = [[NSSocketPortNameServer sharedInstance] registerPort:port name:@"doug"];
+    BOOL isConnected = [[NSSocketPortNameServer sharedInstance] registerPort:port name:@"worker2"];
     
     MathService * mathService = [[MathService alloc] init];
     
