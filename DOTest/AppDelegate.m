@@ -17,15 +17,24 @@
 {
     [super dealloc];
 }
+
+
 	
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     NSLog(@"applicationDidFinishLaunching");
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
     
+    
+    NSString * currentHost = [[NSHost currentHost] localizedName];
+    NSLog(@"I am %@.", currentHost);
+    
+    
     NSSocketPort *port = [[NSSocketPort alloc] init];
     NSConnection *connection = [NSConnection connectionWithReceivePort:port sendPort:port];
-    BOOL isConnected = [[NSSocketPortNameServer sharedInstance] registerPort:port name:@"worker2"];
+    BOOL isConnected = [[NSSocketPortNameServer sharedInstance] registerPort:port name:currentHost];
+    
+    
     
     MathService * mathService = [[MathService alloc] init];
     
@@ -36,6 +45,7 @@
     } else {
         NSLog(@"Object vended.");
     }
+    
     
     [[NSRunLoop currentRunLoop] run];
     [pool drain];
