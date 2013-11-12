@@ -11,6 +11,7 @@
 
 #include <opencv/cv.h>
 #include <opencv/highgui.h>
+#include <math.h>
 
 @implementation AppDelegate
 
@@ -22,47 +23,49 @@
 }
 	
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    /*
-    NSLog(@"applicationDidFinishLaunching");
-    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+{    
+    // Load Image from local storage
+    IplImage *src = cvLoadImage("/Users/alexdobry/Developer/AVS-ServiceProvider/DOTest/Foto.jpg", CV_LOAD_IMAGE_UNCHANGED);
+    // output image (dst) of the same size and depth as src.
+    IplImage *dst = cvCreateImage(cvSize(src->width, src->height), src->depth, 0);
     
-    NSSocketPort *port = [[NSSocketPort alloc] init];
-    NSConnection *connection = [NSConnection connectionWithReceivePort:port sendPort:port];
-    BOOL isConnected = [[NSSocketPortNameServer sharedInstance] registerPort:port name:@"worker2"];
+    // Converts an image from one color space to another (gray).
+    cvCvtColor(src, dst, CV_BGR2GRAY);
     
-    MathService * mathService = [[MathService alloc] init];
+    // Write the image to a file with a different name
+    //cvSaveImage("/Users/alexdobry/Desktop/Foto2.png", dst, 0);
     
-    [connection setRootObject: mathService];
+    // using cvSmooth instead of GaussianBlur to smooth the image, otherwise a lot of false circles may be detected
+    // src, dst, smoothType, density width, density height, sigma 1, sigma 2
+    cvSmooth(dst, dst, CV_GAUSSIAN, 3, 3, 0, 0);
     
-    if (!isConnected) {
-        NSLog(@"Impossible to vend this object.");
-    } else {
-        NSLog(@"Object vended.");
+    // Write the image to a file with a different name
+    //cvSaveImage("/Users/alexdobry/Desktop/Foto3.png", dst, 0);
+    
+    CvMemStorage* storage = cvCreateMemStorage(0);
+    // Finds circles in a grayscale image using the Hough transform.
+    // src, storage that will contain the output sequence of found circles, detection method, example code, example code, example code, example code, min, max
+    CvSeq* result = cvHoughCircles(dst, storage, CV_HOUGH_GRADIENT, 2, dst->height/4, 200, 100, 20, 100);
+    
+    NSLog(@"total: %d", result->total);
+    
+    for (int i = 0; i < result->total; i++) {
+        // returns a pointer (float array) to a sequence element according to its index.
+        // x = [0], y = [1], r = [2]
+        float *detectedCircle = (float*) cvGetSeqElem(result, i);
+        NSLog(@"x = %f, y = %f, r = %f", detectedCircle[0], detectedCircle[1], detectedCircle[2]);
+        
+        // Draws a circle
+        // src, center (combination of x and y), radius, color (red), thickness, example code, example code
+        cvCircle(src, cvPoint(cvRound(detectedCircle[0]),cvRound(detectedCircle[1])), cvRound(detectedCircle[2]), CV_RGB(255,0,0), 3, 8, 0);
     }
     
-    [[NSRunLoop currentRunLoop] run];
-    [pool drain];
-     */
-    
-    IplImage * pInpImg = 0;
-    
-    // Load an image from file - change this based on your image name
-    pInpImg = cvLoadImage("/Users/alexdobry/Developer/AVS-ServiceProvider/DOTest/my_image.jpg", CV_LOAD_IMAGE_UNCHANGED);
-    if(!pInpImg)
-    {
-        fprintf(stderr, "failed to load input image\n");
-    }
-    
-    // Write the image to a file with a different name,
-    // using a different image format -- .png instead of .jpg
-    if( !cvSaveImage("/Users/alexdobry/Developer/AVS-ServiceProvider/DOTest/my_image_copy.png", pInpImg, 0) )
-    {
-        fprintf(stderr, "failed to write image file\n");
-    }
+    cvSaveImage("/Users/alexdobry/Desktop/Foto.png", src, 0);
     
     // Remember to free image memory after using it!
-    cvReleaseImage(&pInpImg);
+    cvReleaseMemStorage(&storage);
+    cvReleaseImage(&dst);
+    cvReleaseImage(&src);
 }
 
 @end
