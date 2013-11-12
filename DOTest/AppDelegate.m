@@ -18,23 +18,20 @@
     [super dealloc];
 }
 
-
+//NSString * currentHost;
 	
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    NSLog(@"applicationDidFinishLaunching");
+
+- (void)worker:(id)host{
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
     
-    
-    NSString * currentHost = [[NSHost currentHost] localizedName];
-    NSLog(@"I am %@.", currentHost);
-    
+    NSString* currentHost = [[NSHost currentHost] localizedName];
     
     NSSocketPort *port = [[NSSocketPort alloc] init];
     NSConnection *connection = [NSConnection connectionWithReceivePort:port sendPort:port];
     BOOL isConnected = [[NSSocketPortNameServer sharedInstance] registerPort:port name:currentHost];
     
     
+    NSLog(@"I am %@.", currentHost);
     
     MathService * mathService = [[MathService alloc] init];
     
@@ -45,10 +42,51 @@
     } else {
         NSLog(@"Object vended.");
     }
-    
-    
     [[NSRunLoop currentRunLoop] run];
-    [pool drain];
+    
+    [pool release];
 }
 
+- (void)informant:(id)host{
+    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+    
+    NSString* currentHost = [[NSHost currentHost] localizedName];
+    NSString * serviceHost = [currentHost stringByAppendingString:@"_service"];
+    
+    NSSocketPort *port = [[NSSocketPort alloc] init];
+    NSConnection *connection = [NSConnection connectionWithReceivePort:port sendPort:port];
+    BOOL isConnected = [[NSSocketPortNameServer sharedInstance] registerPort:port name:serviceHost];
+    
+    NSLog(@"I am %@.", serviceHost);
+    
+    MathService * mathService = [[MathService alloc] init];
+    
+    [connection setRootObject: mathService];
+    
+    if (!isConnected) {
+        NSLog(@"Impossible to vend this object.");
+    } else {
+        NSLog(@"Object vended.");
+    }
+    [[NSRunLoop currentRunLoop] run];
+    
+    [pool release];
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
+    NSLog(@"applicationDidFinishLaunching");
+    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+    
+    
+    //currentHost = [[NSHost currentHost] localizedName];
+    
+    NSThread* worker = [[NSThread alloc] initWithTarget:self selector:@selector(worker:) object:nil];
+    NSThread* informant = [[NSThread alloc] initWithTarget:self selector:@selector(informant:) object:nil];
+    
+    [worker start];
+    [informant start];
+ 
+    [pool drain];
+}
 @end
