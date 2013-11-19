@@ -43,17 +43,18 @@
     }
 
     cvNamedWindow("result", CV_WINDOW_AUTOSIZE);
-    
+    int i = 1;
     while (true) {
         img = cvQueryFrame(capture);
         if (!img) {
             NSLog(@"Failed to retrive frame");
         }
-        
-        circles = [hough performHoughTransformationWithIplImage:img];
-        img = [self drawCircles:circles on:img];
-    
+        if ((i % 9) == 0) {
+            circles = [hough performHoughTransformationWithIplImage:img];
+            img = [self drawCircles:circles on:img];
+        }
         cvShowImage("result", img);
+        i++;
     }
 
 }
