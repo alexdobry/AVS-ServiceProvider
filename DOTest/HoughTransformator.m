@@ -8,10 +8,11 @@
 
 #import "HoughTransformator.h"
 #import "Circle.h"
+#include <opencv/cv.h>
 
 @implementation HoughTransformator
 
-- (NSMutableArray*)performHoughTransformationWithImage:(NSString*) imageUrl {
+- (NSMutableArray*)performHoughTransformationWithImageUrl:(NSString*) imageUrl {
     
     // Load Image from local storage
     IplImage *src = cvLoadImage([imageUrl UTF8String], CV_LOAD_IMAGE_UNCHANGED);
@@ -43,7 +44,6 @@
         // src, center (combination of x and y), radius, color (red), thickness, example code, example code
         // cvCircle(src, cvPoint(cvRound(detectedCircle[0]),cvRound(detectedCircle[1])), cvRound(detectedCircle[2]), CV_RGB(255,0,0), 3, 8, 0);
         [circles addObject:[[Circle alloc] initWithX:detectedCircle[0] y:detectedCircle[1] r:detectedCircle[2]]];
-        
     }
     
     //cvSaveImage("/Users/alexdobry/Desktop/Foto.png", src, 0);
@@ -61,6 +61,25 @@
     //  -> mindist --> Spanne zwischen den Kreismittelpunkten 
     //Bei münzen mindist = 100 und min 30 und max 120 relativ gutes ergebnis
 
+}
+
+- (NSMutableArray*) performHoughTransformationWithIplImage:(IplImage*) src {
+    IplImage *dst = cvCreateImage(cvSize(src->width, src->height), src->depth, 0);
+    cvCvtColor(src, dst, CV_BGR2GRAY);
+    cvSmooth(dst, dst, CV_GAUSSIAN, 11, 11, 0, 0);
+    
+    CvMemStorage* storage = cvCreateMemStorage(0);
+    CvSeq* result = cvHoughCircles(dst, storage, CV_HOUGH_GRADIENT, 2, 100, 200, 100, 30, 120);
+    NSLog(@"total: %d", result->total);
+    
+    NSMutableArray* circles = [[NSMutableArray alloc] initWithCapacity:result->total];
+    for (int i = 0; i < result->total; i++) {
+        float *detectedCircle = (float*) cvGetSeqElem(result, i);
+        NSLog(@"x = %f, y = %f, r = %f", detectedCircle[0], detectedCircle[1], detectedCircle[2]);
+        [circles addObject:[[Circle alloc] initWithX:detectedCircle[0] y:detectedCircle[1] r:detectedCircle[2]]];
+    }
+    
+    return [circles autorelease];
 }
 
 

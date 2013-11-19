@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#include <opencv/cv.h>
 
 @protocol HoughTransformationProtocol <NSObject>
 
-- (NSMutableArray*) performHoughTransformationWithImage:(NSString*) imageUrl;
+- (NSMutableArray*) performHoughTransformationWithImageUrl:(NSString*) imageUrl;
+- (NSMutableArray*) performHoughTransformationWithIplImage:(IplImage*) iplImage;
 
 @end
