@@ -13,7 +13,8 @@
 		068DC88518169E4D00300E09 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 068DC88318169E4D00300E09 /* Credits.rtf */; };
 		068DC88818169E4D00300E09 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 068DC88718169E4D00300E09 /* AppDelegate.m */; };
 		068DC88B18169E4D00300E09 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 068DC88918169E4D00300E09 /* MainMenu.xib */; };
-		068DC8971816A4DA00300E09 /* MathService.m in Sources */ = {isa = PBXBuildFile; fileRef = 068DC8961816A4DA00300E09 /* MathService.m */; };
+		06F44F7C183BA4F1002C9BAE /* HoughTransformator.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F44F7B183BA4F1002C9BAE /* HoughTransformator.m */; };
+		06F44F7F183BB185002C9BAE /* Circle.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F44F7E183BB185002C9BAE /* Circle.m */; };
 		06FC51B21829693B00F4D8C4 /* libopencv_calib3d.2.4.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06FC51A11829693B00F4D8C4 /* libopencv_calib3d.2.4.4.dylib */; };
 		06FC51B31829693B00F4D8C4 /* libopencv_contrib.2.4.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06FC51A21829693B00F4D8C4 /* libopencv_contrib.2.4.4.dylib */; };
 		06FC51B41829693B00F4D8C4 /* libopencv_core.2.4.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06FC51A31829693B00F4D8C4 /* libopencv_core.2.4.4.dylib */; };
@@ -47,9 +48,11 @@
 		068DC88618169E4D00300E09 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		068DC88718169E4D00300E09 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		068DC88A18169E4D00300E09 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		068DC8911816A3AC00300E09 /* MathProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathProtocol.h; sourceTree = "<group>"; };
-		068DC8951816A4DA00300E09 /* MathService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathService.h; sourceTree = "<group>"; };
-		068DC8961816A4DA00300E09 /* MathService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathService.m; sourceTree = "<group>"; };
+		068DC8911816A3AC00300E09 /* HoughTransformationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoughTransformationProtocol.h; sourceTree = "<group>"; };
+		06F44F79183BA4A9002C9BAE /* HoughTransformator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoughTransformator.h; sourceTree = "<group>"; };
+		06F44F7B183BA4F1002C9BAE /* HoughTransformator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoughTransformator.m; sourceTree = "<group>"; };
+		06F44F7D183BB185002C9BAE /* Circle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Circle.h; sourceTree = "<group>"; };
+		06F44F7E183BB185002C9BAE /* Circle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Circle.m; sourceTree = "<group>"; };
 		06FC51A11829693B00F4D8C4 /* libopencv_calib3d.2.4.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libopencv_calib3d.2.4.4.dylib; sourceTree = "<group>"; };
 		06FC51A21829693B00F4D8C4 /* libopencv_contrib.2.4.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libopencv_contrib.2.4.4.dylib; sourceTree = "<group>"; };
 		06FC51A31829693B00F4D8C4 /* libopencv_core.2.4.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libopencv_core.2.4.4.dylib; sourceTree = "<group>"; };
@@ -139,10 +142,12 @@
 			children = (
 				06FC519F1829689E00F4D8C4 /* New Group */,
 				068DC88618169E4D00300E09 /* AppDelegate.h */,
-				068DC8911816A3AC00300E09 /* MathProtocol.h */,
+				068DC8911816A3AC00300E09 /* HoughTransformationProtocol.h */,
 				068DC88718169E4D00300E09 /* AppDelegate.m */,
-				068DC8951816A4DA00300E09 /* MathService.h */,
-				068DC8961816A4DA00300E09 /* MathService.m */,
+				06F44F79183BA4A9002C9BAE /* HoughTransformator.h */,
+				06F44F7B183BA4F1002C9BAE /* HoughTransformator.m */,
+				06F44F7D183BB185002C9BAE /* Circle.h */,
+				06F44F7E183BB185002C9BAE /* Circle.m */,
 				068DC88918169E4D00300E09 /* MainMenu.xib */,
 				068DC87B18169E4D00300E09 /* Supporting Files */,
 			);
@@ -250,7 +255,8 @@
 			files = (
 				068DC88118169E4D00300E09 /* main.m in Sources */,
 				068DC88818169E4D00300E09 /* AppDelegate.m in Sources */,
-				068DC8971816A4DA00300E09 /* MathService.m in Sources */,
+				06F44F7C183BA4F1002C9BAE /* HoughTransformator.m in Sources */,
+				06F44F7F183BB185002C9BAE /* Circle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

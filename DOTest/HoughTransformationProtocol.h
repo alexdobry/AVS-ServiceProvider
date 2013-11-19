@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol MathProtocol <NSObject>
+@protocol HoughTransformationProtocol <NSObject>
 
-- (int)isPrime:(int)number;
+- (NSMutableArray*) performHoughTransformationWithImage:(NSString*) imageUrl;
 
 @end

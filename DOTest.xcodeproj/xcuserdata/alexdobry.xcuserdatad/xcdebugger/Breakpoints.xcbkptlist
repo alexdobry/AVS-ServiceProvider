@@ -15,5 +15,19 @@
          startingLineNumber = "9"
          endingLineNumber = "9">
       </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "DOTest/Circle.h"
+         timestampString = "406566276.069436"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "13"
+         endingLineNumber = "13"
+         landmarkName = "x"
+         landmarkType = "19">
+      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>
