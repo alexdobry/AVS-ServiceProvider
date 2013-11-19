@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "MathService.h"
+#import "CPUUsage.h"
+#import "InformantProtocol.h"
 
 @implementation AppDelegate
 
@@ -59,9 +61,10 @@
     
     NSLog(@"I am %@.", serviceHost);
     
-    MathService * mathService = [[MathService alloc] init];
+    CPUUsage * informant = [[CPUUsage alloc] init];
     
-    [connection setRootObject: mathService];
+    [connection setRootObject: informant];
+    
     
     if (!isConnected) {
         NSLog(@"Impossible to vend this object.");

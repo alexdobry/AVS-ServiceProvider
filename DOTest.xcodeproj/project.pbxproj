@@ -14,6 +14,7 @@
 		068DC88818169E4D00300E09 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 068DC88718169E4D00300E09 /* AppDelegate.m */; };
 		068DC88B18169E4D00300E09 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 068DC88918169E4D00300E09 /* MainMenu.xib */; };
 		068DC8971816A4DA00300E09 /* MathService.m in Sources */ = {isa = PBXBuildFile; fileRef = 068DC8961816A4DA00300E09 /* MathService.m */; };
+		399A0040183B964E00FCBB6E /* CPUUsage.m in Sources */ = {isa = PBXBuildFile; fileRef = 399A003F183B964E00FCBB6E /* CPUUsage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,9 @@
 		068DC8911816A3AC00300E09 /* MathProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathProtocol.h; sourceTree = "<group>"; };
 		068DC8951816A4DA00300E09 /* MathService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathService.h; sourceTree = "<group>"; };
 		068DC8961816A4DA00300E09 /* MathService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathService.m; sourceTree = "<group>"; };
+		399A003E183B964E00FCBB6E /* CPUUsage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPUUsage.h; sourceTree = "<group>"; };
+		399A003F183B964E00FCBB6E /* CPUUsage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPUUsage.m; sourceTree = "<group>"; };
+		399A0046183BCF2C00FCBB6E /* InformantProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformantProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +93,11 @@
 				068DC88618169E4D00300E09 /* AppDelegate.h */,
 				068DC8911816A3AC00300E09 /* MathProtocol.h */,
 				068DC88718169E4D00300E09 /* AppDelegate.m */,
+				399A003E183B964E00FCBB6E /* CPUUsage.h */,
+				399A003F183B964E00FCBB6E /* CPUUsage.m */,
 				068DC8951816A4DA00300E09 /* MathService.h */,
 				068DC8961816A4DA00300E09 /* MathService.m */,
+				399A0046183BCF2C00FCBB6E /* InformantProtocol.h */,
 				068DC88918169E4D00300E09 /* MainMenu.xib */,
 				068DC87B18169E4D00300E09 /* Supporting Files */,
 			);
@@ -175,6 +182,7 @@
 				068DC88118169E4D00300E09 /* main.m in Sources */,
 				068DC88818169E4D00300E09 /* AppDelegate.m in Sources */,
 				068DC8971816A4DA00300E09 /* MathService.m in Sources */,
+				399A0040183B964E00FCBB6E /* CPUUsage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
