@@ -16,7 +16,7 @@
     
     // Load Image from local storage
     IplImage *src = cvLoadImage([imageUrl UTF8String], CV_LOAD_IMAGE_UNCHANGED);
-    // output image (dst) of the same size and depth as src.
+    // output image (dst) of the same size and depth @"as src.
     IplImage *dst = cvCreateImage(cvSize(src->width, src->height), src->depth, 0);
     
     // Converts an image from one color space to another (gray).

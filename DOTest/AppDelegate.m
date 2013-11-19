@@ -13,6 +13,7 @@
 #include <opencv/cv.h>
 #include <opencv/highgui.h>
 #include <math.h>
+
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -41,7 +42,9 @@
     if (!capture) {
         NSLog(@"Cannot initialize webcam");
     }
-
+    CvFont* font;
+	cvInitFont(font,CV_FONT_HERSHEY_DUPLEX,1,0.8,0.2,1,8);
+    
     cvNamedWindow("result", CV_WINDOW_AUTOSIZE);
     int i = 1;
     while (true) {
@@ -53,6 +56,7 @@
             circles = [hough performHoughTransformationWithIplImage:img];
             img = [self drawCircles:circles on:img];
         }
+        cvPutText(img, [@"hallo" UTF8String], cvPoint(30,30), font, cvScalarAll(255));
         cvShowImage("result", img);
         i++;
     }
