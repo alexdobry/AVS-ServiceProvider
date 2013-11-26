@@ -30,6 +30,12 @@
     return img;
 }
 
+- (double)getFps:(time_t)end i:(int *)i start:(time_t)start
+{
+    time(&end);   
+    return ++(*i) / (difftime (end, start));
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // ServiceUser usage, distributed object
@@ -46,19 +52,32 @@
 	cvInitFont(font,CV_FONT_HERSHEY_DUPLEX,1,0.8,0.2,1,8);
     
     cvNamedWindow("result", CV_WINDOW_AUTOSIZE);
-    int i = 1;
+    
+    time_t start, end;
+    double fps;
+    int i = 0;
+    
+    time(&start);
+    
     while (true) {
-        img = cvQueryFrame(capture);
-        if (!img) {
-            NSLog(@"Failed to retrive frame");
+        @autoreleasepool {
+            img = cvQueryFrame(capture);
+            if (!img) {
+                NSLog(@"Failed to retrive frame");
+            }
+            if (i % 2 == 0) {
+                circles = [hough performHoughTransformationWithIplImage:img];
+                img = [self drawCircles:circles on:img];
+            }
+            
+            fps = [self getFps:end i:&i start:start];
+            char c=cvWaitKey(33);
+            if(c==27)
+                break;
+            
+            cvPutText(img, [[NSString stringWithFormat:@"%.2lf", fps] UTF8String], cvPoint(30,30), font, cvScalarAll(255));
+            cvShowImage("result", img);
         }
-        if ((i % 9) == 0) {
-            circles = [hough performHoughTransformationWithIplImage:img];
-            img = [self drawCircles:circles on:img];
-        }
-        cvPutText(img, [@"hallo" UTF8String], cvPoint(30,30), font, cvScalarAll(255));
-        cvShowImage("result", img);
-        i++;
     }
 
 }

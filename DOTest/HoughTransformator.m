@@ -79,6 +79,8 @@
         [circles addObject:[[Circle alloc] initWithX:detectedCircle[0] y:detectedCircle[1] r:detectedCircle[2]]];
     }
     
+    cvReleaseImageHeader(&dst);
+    cvReleaseMemStorage(&storage);
     return [circles autorelease];
 }
 
