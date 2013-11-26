@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0678EECC1844DFF100C5C5FA /* CPUUsage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0678EECB1844DFF100C5C5FA /* CPUUsage.m */; };
 		068DC87518169E4D00300E09 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 068DC87418169E4D00300E09 /* Cocoa.framework */; };
 		068DC87F18169E4D00300E09 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 068DC87D18169E4D00300E09 /* InfoPlist.strings */; };
 		068DC88118169E4D00300E09 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 068DC88018169E4D00300E09 /* main.m */; };
@@ -35,6 +36,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0678EECA1844DFF100C5C5FA /* CPUUsage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPUUsage.h; sourceTree = "<group>"; };
+		0678EECB1844DFF100C5C5FA /* CPUUsage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPUUsage.m; sourceTree = "<group>"; };
+		0678EECE1844E08800C5C5FA /* InformantProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformantProtocol.h; sourceTree = "<group>"; };
 		068DC87018169E4D00300E09 /* DOTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DOTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		068DC87418169E4D00300E09 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		068DC87718169E4D00300E09 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -148,6 +152,9 @@
 				06F44F7B183BA4F1002C9BAE /* HoughTransformator.m */,
 				06F44F7D183BB185002C9BAE /* Circle.h */,
 				06F44F7E183BB185002C9BAE /* Circle.m */,
+				0678EECA1844DFF100C5C5FA /* CPUUsage.h */,
+				0678EECB1844DFF100C5C5FA /* CPUUsage.m */,
+				0678EECE1844E08800C5C5FA /* InformantProtocol.h */,
 				068DC88918169E4D00300E09 /* MainMenu.xib */,
 				068DC87B18169E4D00300E09 /* Supporting Files */,
 			);
@@ -257,6 +264,7 @@
 				068DC88818169E4D00300E09 /* AppDelegate.m in Sources */,
 				06F44F7C183BA4F1002C9BAE /* HoughTransformator.m in Sources */,
 				06F44F7F183BB185002C9BAE /* Circle.m in Sources */,
+				0678EECC1844DFF100C5C5FA /* CPUUsage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
