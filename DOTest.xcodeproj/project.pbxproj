@@ -146,8 +146,8 @@
 			children = (
 				06FC519F1829689E00F4D8C4 /* New Group */,
 				068DC88618169E4D00300E09 /* AppDelegate.h */,
-				068DC8911816A3AC00300E09 /* HoughTransformationProtocol.h */,
 				068DC88718169E4D00300E09 /* AppDelegate.m */,
+				068DC8911816A3AC00300E09 /* HoughTransformationProtocol.h */,
 				06F44F79183BA4A9002C9BAE /* HoughTransformator.h */,
 				06F44F7B183BA4F1002C9BAE /* HoughTransformator.m */,
 				06F44F7D183BB185002C9BAE /* Circle.h */,

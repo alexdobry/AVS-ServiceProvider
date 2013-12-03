@@ -64,25 +64,65 @@
 }
 
 - (NSMutableArray*) performHoughTransformationWithIplImage:(IplImage*) src {
+//    IplImage *dst = cvCreateImage(cvSize(src->width, src->height), src->depth, 0);
+//    cvCvtColor(src, dst, CV_BGR2GRAY);
+//    cvSmooth(dst, dst, CV_GAUSSIAN, 11, 11, 0, 0);
+//    
+//    CvMemStorage* storage = cvCreateMemStorage(0);
+//    CvSeq* result = cvHoughCircles(dst, storage, CV_HOUGH_GRADIENT, 2, 100, 200, 100, 30, 120);
+//    NSLog(@"total: %d", result->total);
+//    
+//    NSMutableArray* circles = [[NSMutableArray alloc] initWithCapacity:result->total];
+//    for (int i = 0; i < result->total; i++) {
+//        float *detectedCircle = (float*) cvGetSeqElem(result, i);
+//        NSLog(@"x = %f, y = %f, r = %f", detectedCircle[0], detectedCircle[1], detectedCircle[2]);
+//        [circles addObject:[[Circle alloc] initWithX:detectedCircle[0] y:detectedCircle[1] r:detectedCircle[2]]];
+//    }
+//    
+//    cvReleaseImageHeader(&dst);
+//    cvReleaseMemStorage(&storage);
+//    return [circles autorelease];
+    NSLog(@"performHoughTransformationWithIplImage");
+    return nil;
+}
+
+- (NSMutableArray*) performHoughTransformationWithNSImage:(NSImage*) img {
+    NSLog(@"performHoughTransformationWithNSImage");    
+    IplImage* src = [self createIplImageFromUIImage:img];
+    
     IplImage *dst = cvCreateImage(cvSize(src->width, src->height), src->depth, 0);
     cvCvtColor(src, dst, CV_BGR2GRAY);
     cvSmooth(dst, dst, CV_GAUSSIAN, 11, 11, 0, 0);
-    
+        
     CvMemStorage* storage = cvCreateMemStorage(0);
     CvSeq* result = cvHoughCircles(dst, storage, CV_HOUGH_GRADIENT, 2, 100, 200, 100, 30, 120);
     NSLog(@"total: %d", result->total);
-    
+     
     NSMutableArray* circles = [[NSMutableArray alloc] initWithCapacity:result->total];
     for (int i = 0; i < result->total; i++) {
         float *detectedCircle = (float*) cvGetSeqElem(result, i);
         NSLog(@"x = %f, y = %f, r = %f", detectedCircle[0], detectedCircle[1], detectedCircle[2]);
         [circles addObject:[[Circle alloc] initWithX:detectedCircle[0] y:detectedCircle[1] r:detectedCircle[2]]];
     }
-    
+        
     cvReleaseImageHeader(&dst);
     cvReleaseMemStorage(&storage);
     return [circles autorelease];
 }
 
+- (IplImage*)createIplImageFromUIImage:(NSImage*)img {	
+    NSBitmapImageRep *bitmap2 = [NSBitmapImageRep imageRepWithData:[img TIFFRepresentation]];
+    NSImage* bild1 = [[NSImage alloc] initWithSize:NSMakeSize([bitmap2 pixelsWide],[bitmap2 pixelsHigh])];
+    
+    int depth       = (int) [bitmap2 bitsPerSample];
+    int channels    = (int) [bitmap2 samplesPerPixel];
+    int height      = [bild1 size].height;
+    int width       = [bild1 size].width;
+    
+    
+    IplImage *iplpic = cvCreateImage(cvSize(  width,height), depth, channels);
+    cvSetImageData(iplpic, [bitmap2 bitmapData], [bitmap2 bytesPerRow]);
+	return iplpic;
+}
 
 @end
