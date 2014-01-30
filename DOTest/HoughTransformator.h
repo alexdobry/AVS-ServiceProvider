@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "HoughTransformationProtocol.h"
 
-#include <opencv/cv.h>
-#include <opencv/highgui.h>
+//#include <opencv/cv.h>
+//#include <opencv/highgui.h>
 #include <math.h>
 
 @interface HoughTransformator : NSObject <HoughTransformationProtocol>
 
-- (IplImage*)createIplImageFromUIImage:(NSImage *)image;
+//- (IplImage*)createIplImageFromUIImage:(NSImage *)image;
+
+-(void)justSomeRandomFoo;
 
 @end

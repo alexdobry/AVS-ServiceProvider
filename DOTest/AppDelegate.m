@@ -12,9 +12,9 @@
 #import "CPUUsage.h"
 #import "InformantProtocol.h"
 
-#include <opencv/cv.h>
-#include <opencv/highgui.h>
-#include <math.h>
+//#include <opencv/cv.h>
+//#include <opencv/highgui.h>
+//#include <math.h>
 
 @implementation AppDelegate
 
@@ -76,12 +76,12 @@
     [pool release];
 }
 
-- (IplImage*)drawCircles:(NSMutableArray*) circles on:(IplImage*) img {
-    for (Circle* circle in circles) {
-        cvCircle(img, cvPoint(circle.x, circle.y), circle.r, CV_RGB(255,0,0), 3, 8, 0);
-    }
-    return img;
-}
+//- (IplImage*)drawCircles:(NSMutableArray*) circles on:(IplImage*) img {
+//    for (Circle* circle in circles) {
+//        cvCircle(img, cvPoint(circle.x, circle.y), circle.r, CV_RGB(255,0,0), 3, 8, 0);
+//    }
+//    return img;
+//}
 
 - (double)getFps:(time_t)end i:(int *)i start:(time_t)start
 {
@@ -89,16 +89,27 @@
     return ++(*i) / (difftime (end, start));
 }
 
+-(void) logNewMessage:(NSNotification*) notification {
+    [self.loggerTextField setStringValue:[[notification userInfo] valueForKey:@"message"]];
+}
+
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     NSLog(@"applicationDidFinishLaunching");
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 
-    NSThread* worker = [[NSThread alloc] initWithTarget:self selector:@selector(worker:) object:nil];
-    NSThread* informant = [[NSThread alloc] initWithTarget:self selector:@selector(informant:) object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logNewMessage:) name:@"logger" object:nil];
+    [self.loggerTextField setEditable:NO];
     
-    [worker start];
-    [informant start];
+//    NSThread* worker = [[NSThread alloc] initWithTarget:self selector:@selector(worker:) object:nil];
+//    NSThread* informant = [[NSThread alloc] initWithTarget:self selector:@selector(informant:) object:nil];
+//    
+//    [worker start];
+//    [informant start];
+    
+    HoughTransformator* hough = [[HoughTransformator alloc] init];
+        [hough justSomeRandomFoo];
     
     [pool drain];
     
