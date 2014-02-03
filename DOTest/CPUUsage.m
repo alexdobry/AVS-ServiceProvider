@@ -60,7 +60,6 @@ float coreUsage[16];
             
             //NSLog(@"Core: %u Usage: %f %f %f",i,inUse / total, inUse, total);
             NSLog(@"Core : %u, Usage: %.2f%%", i, inUse / total * 100.f);
-            [coreUsage addObject: [NSNumber numberWithFloat:inUse / total * 100.f]];
         }
         
         [CPUUsageLock unlock];
@@ -79,7 +78,7 @@ float coreUsage[16];
         NSLog(@"Error!");
         [NSApp terminate:nil];
     }
-    
+        
     return coreUsage;
 }
 

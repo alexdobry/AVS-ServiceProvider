@@ -12,5 +12,8 @@
 
 @property (assign) IBOutlet NSWindow *window;
 
+@property (assign) IBOutlet NSTextField *nameTextField;
+@property (assign) IBOutlet NSTextField *loggerTextField;
+@property (assign) IBOutlet NSTextField *usageTextField;
 
 @end

@@ -15,6 +15,6 @@
 
 @interface HoughTransformator : NSObject <HoughTransformationProtocol>
 
-- (IplImage*)createIplImageFromUIImage:(NSImage *)image;
+- (IplImage*)createIplImageFromNSImage:(NSImage *)image;
 
 @end

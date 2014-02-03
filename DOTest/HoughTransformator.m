@@ -88,7 +88,7 @@
 
 - (NSMutableArray*) performHoughTransformationWithNSImage:(NSImage*) img {
     NSLog(@"performHoughTransformationWithNSImage");    
-    IplImage* src = [self createIplImageFromUIImage:img];
+    IplImage* src = [self createIplImageFromNSImage:img];
     
     IplImage *dst = cvCreateImage(cvSize(src->width, src->height), src->depth, 0);
     cvCvtColor(src, dst, CV_BGR2GRAY);
@@ -99,18 +99,20 @@
     NSLog(@"total: %d", result->total);
      
     NSMutableArray* circles = [[NSMutableArray alloc] initWithCapacity:result->total];
+    
     for (int i = 0; i < result->total; i++) {
         float *detectedCircle = (float*) cvGetSeqElem(result, i);
         NSLog(@"x = %f, y = %f, r = %f", detectedCircle[0], detectedCircle[1], detectedCircle[2]);
         [circles addObject:[[Circle alloc] initWithX:detectedCircle[0] y:detectedCircle[1] r:detectedCircle[2]]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"logger" object:[NSString stringWithFormat:@"x = %f, y = %f, r = %f", detectedCircle[0], detectedCircle[1], detectedCircle[2]]];
     }
-        
+    
     cvReleaseImageHeader(&dst);
     cvReleaseMemStorage(&storage);
     return [circles autorelease];
 }
 
-- (IplImage*)createIplImageFromUIImage:(NSImage*)img {	
+- (IplImage*)createIplImageFromNSImage:(NSImage*)img {	
     NSBitmapImageRep *bitmap2 = [NSBitmapImageRep imageRepWithData:[img TIFFRepresentation]];
     NSImage* bild1 = [[NSImage alloc] initWithSize:NSMakeSize([bitmap2 pixelsWide],[bitmap2 pixelsHigh])];
     

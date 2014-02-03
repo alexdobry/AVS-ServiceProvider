@@ -19,6 +19,9 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize nameTextField = _nameTextField;
+@synthesize loggerTextField = _loggerTextField;
+@synthesize usageTextField = _usageTextField;
 
 - (void)dealloc
 {
@@ -61,6 +64,7 @@
     BOOL isConnected = [[NSSocketPortNameServer sharedInstance] registerPort:port name:serviceHost];
     
     NSLog(@"I am %@.", serviceHost);
+    [self.nameTextField setStringValue:serviceHost];
     
     CPUUsage * informant = [[CPUUsage alloc] init];
     [connection setRootObject: informant];
@@ -89,17 +93,32 @@
     return ++(*i) / (difftime (end, start));
 }
 
+-(void) logMessages:(NSNotification*) notification {
+    [self.loggerTextField setStringValue:[notification object]];
+    //[self.textView setString:[[self.textView string] stringByAppendingFormat:@"\n %@", [notification object]]];
+}
+
+-(void) logUsage:(NSNotification*) notification {
+    [self.usageTextField setStringValue:[notification object]];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     NSLog(@"applicationDidFinishLaunching");
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-
+    
+    [self.loggerTextField setEditable:NO];
+    [self.usageTextField setEditable:NO];
+    
     NSThread* worker = [[NSThread alloc] initWithTarget:self selector:@selector(worker:) object:nil];
     NSThread* informant = [[NSThread alloc] initWithTarget:self selector:@selector(informant:) object:nil];
     
     [worker start];
     [informant start];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logMessages:) name:@"logger" object:nil];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logUsage:) name:@"cpu" object:nil];
+
     [pool drain];
     
 }
