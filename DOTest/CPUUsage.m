@@ -38,6 +38,7 @@ float coreUsage[16];
 - (NSMutableArray*)getInfo
 {
     NSMutableArray * coreUsage = [[[NSMutableArray alloc] init] autorelease];
+    NSString* usage = @"";
     
     natural_t numCPUsU = 0U;
     kern_return_t err = host_processor_info(mach_host_self(), PROCESSOR_CPU_LOAD_INFO, &numCPUsU, &cpuInfo, &numCpuInfo);
@@ -60,6 +61,8 @@ float coreUsage[16];
             
             //NSLog(@"Core: %u Usage: %f %f %f",i,inUse / total, inUse, total);
             NSLog(@"Core : %u, Usage: %.2f%%", i, inUse / total * 100.f);
+            [coreUsage addObject: [NSNumber numberWithFloat:inUse / total * 100.f]];
+            usage = [usage stringByAppendingFormat:@"Core: %u, Usage: %.2f%%\n", i, inUse / total * 100.f];
         }
         
         [CPUUsageLock unlock];
@@ -79,6 +82,8 @@ float coreUsage[16];
         [NSApp terminate:nil];
     }
         
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"cpu" object:usage];
+
     return coreUsage;
 }
 

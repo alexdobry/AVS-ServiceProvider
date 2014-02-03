@@ -95,7 +95,6 @@
 
 -(void) logMessages:(NSNotification*) notification {
     [self.loggerTextField setStringValue:[notification object]];
-    //[self.textView setString:[[self.textView string] stringByAppendingFormat:@"\n %@", [notification object]]];
 }
 
 -(void) logUsage:(NSNotification*) notification {
@@ -117,7 +116,7 @@
     [informant start];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logMessages:) name:@"logger" object:nil];
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logUsage:) name:@"cpu" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logUsage:) name:@"cpu" object:nil];
 
     [pool drain];
     
